@@ -1,0 +1,28 @@
+{
+	"presets": [
+		["es2015", { "modules": false }],
+		"react",
+		"stage-0"
+	],
+	"plugins": [
+		"react-hot-loader/babel",
+		[
+			"module-resolver", {
+				"root": ["./src"],
+				"alias": {
+					"src": "./src",
+					"actions": "./src/actions",
+					"assets": "./src/assets",
+					"styles": "./src/assets/styles",
+					"components": "./src/components",
+					"constants": "./src/constants",
+					"containers": "./src/containers",
+					"reducers": "./src/reducers",
+					"store": "./src/store",
+					"utils": "./src/utils",
+					"underscore": ["lodash"]
+				}
+			}
+		]
+	]
+}
