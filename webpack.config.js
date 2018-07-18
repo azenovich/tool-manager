@@ -39,9 +39,14 @@ const webpackConfig = {
 				exclude: /node_modules/,
 				use: [
 					'style-loader',
-					'css-loader',
+					{ loader: 'css-loader', options: { importLoaders: 1 } },
+					'postcss-loader',
 					'sass-loader'
 				]
+			},
+			{
+				test: /\.(eot|svg|ttf|woff|woff2)$/,
+				loader: 'file-loader?name=assets/fonts/[name].[ext]'
 			}
 		]
 	}, 

@@ -6,6 +6,7 @@
 	],
 	"plugins": [
 		"react-hot-loader/babel",
+		"react-html-attrs",
 		[
 			"module-resolver", {
 				"root": ["./src"],
