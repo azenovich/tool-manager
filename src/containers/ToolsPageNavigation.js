@@ -6,7 +6,7 @@ class ToolsPageNavigation extends Component {
 	constructor(props) {
 		super(props)
 
-		this.handlePreviousClick = this.handleNextClick.bind(this)
+		this.handlePreviousClick = this.handlePreviousClick.bind(this)
 		this.handleNextClick = this.handleNextClick.bind(this)
 	}
 
