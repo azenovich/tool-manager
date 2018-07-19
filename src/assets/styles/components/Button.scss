@@ -1,0 +1,33 @@
+.Wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
+.Button {
+	display: inline-block;
+	text-align: center;
+	border-radius: .25rem; 
+	padding: .375rem .75rem; 
+	border: 1px solid transparent;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 16px;
+
+	&__rightShift {
+		margin-right: 10%;
+	}
+
+	&__primary {
+		color: #ffffff;
+		background-color: $primary-color;
+	}
+
+	&__success {
+		background-color: $success-color;
+	}
+
+	&__warning {
+		background-color: $warning-color;
+	}
+}
