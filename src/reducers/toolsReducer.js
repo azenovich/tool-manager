@@ -3,24 +3,27 @@ import storage from 'utils/storage'
 
 const initState = {
 	items: [],
-	total: 0
+	totalNumberOfPage: 0,
+	pageIndex: 0,
+	pageSize: 0
 };
 
 const toolsReducer = (state = initState, action) => {
-	console.log(action)
 
 	switch (action.type) {
 		case actionConstants.DISPLAY_TOOL_PAGE: {
 			const { pageSize, pageIndex } = action
-			const tools = storage.getItem();
-			const count = tools.count;
-			let shift = pageSize * pageIndex
+			console.log(action)
 
-			shift = (shift > count) ? count : shift
-
+			const items = storage.getItem();
+			const shift = pageSize * pageIndex
+			const totalNumberOfPage = Math.ceil(items.length / pageSize) - 1;
+			
 			return {
-				...state,
-				items: tools.slice(shift, shift + pageSize)
+				items: items.slice(shift, shift + pageSize),
+				pageIndex: pageIndex,
+				pageSize: pageSize,
+				totalNumberOfPage: totalNumberOfPage
 			}
 		}
 

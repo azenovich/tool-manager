@@ -5,30 +5,42 @@ import { bindActionCreators } from 'redux'
 import Title from 'components/Title'
 import Button from 'components/Button';
 import ToolsTable from 'containers/ToolsTable'
+import ToolsPageNavigation from 'containers/ToolsPageNavigation'
 import { displayToolPage } from 'actions/actions'
 
 class ToolsList extends Component {
 
 	componentWillMount() {
-		const { displayToolPage } = this.props;
+		const { displayToolPage, pageSize } = this.props;
 
-		displayToolPage(5, 1);
+		displayToolPage(pageSize, 0);
 	}
 
 	render() {
-		const { tools } = this.props
+		const { displayToolPage } = this.props
+		const { items, pageIndex, totalNumberOfPage, pageSize } = this.props.tools
 
 		return (
 			<div className="ToolsList">
 				<Title>
 					Tool Manager
 				</Title>
-				<Button text="+ Add" className="Button Button__primary Button__rightShift" />
+				<div class="ToolsList__button-wrapper">
+					<Button className="Button Button__primary Button__rightShift">
+						+ Add
+					</Button>
+				</div>
 
-				<ToolsTable tools={tools.items} />
+				<ToolsTable tools={items} />
+				<ToolsPageNavigation currentPage={pageIndex} totalNumberOfPage={totalNumberOfPage} 
+					displayToolPage={displayToolPage} pageSize={pageSize} />
 			</div>
 		)
 	}
+}
+
+ToolsList.defaultProps = {
+	pageSize: 5
 }
 
 const mapStateToProps = (state) => {

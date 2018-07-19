@@ -1,9 +1,3 @@
-.Wrapper {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-end;
-}
-
 .Button {
 	display: inline-block;
 	text-align: center;
@@ -19,7 +13,7 @@
 	}
 
 	&__primary {
-		color: #ffffff;
+		color: $text-color;
 		background-color: $primary-color;
 	}
 
