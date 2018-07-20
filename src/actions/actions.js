@@ -7,7 +7,7 @@ export const displayToolPage = (pageIndex) => {
 	}
 }
 
-export const addNewTool = ({ name, toolType, location }) => {
+export const addNewTool = ({ name, type: toolType, location }) => {
 	return {
 		type: actionConstants.ADD_NEW_TOOL,
 		name, 

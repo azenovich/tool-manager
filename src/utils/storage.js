@@ -25,11 +25,17 @@ const storage = {
 		}
 
 		return items
+	},
+
+	saveItems(items) {
+		if (items) {
+			localStorage.setItem(storageKey, JSON.stringify(items))
+		}
 	}
 }
 
 if (localStorage.getItem(storageKey) === null) {
-	localStorage.setItem(storageKey, JSON.stringify(toolItems))
+	storage.saveItems(toolItems)
 }
 
 export default storage

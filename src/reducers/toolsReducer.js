@@ -16,16 +16,10 @@ const initState = {
 };
 
 const toolsReducer = (state = initState, action) => {
-	console.log(state)
 	
 	switch (action.type) {
 		case actionConstants.DISPLAY_TOOL_PAGE: {
 			const { pageIndex } = action
-			
-			console.log({
-				...state,
-				pageIndex: pageIndex
-			})
 
 			return {
 				...state,
@@ -35,18 +29,22 @@ const toolsReducer = (state = initState, action) => {
 
 		case actionConstants.ADD_NEW_TOOL: {
 			const { name, toolType, location } = action
-			const { items, pageSize } = state
+			const { pageSize } = state
+			let items = state.items
 			
-			items.concat({
+			items = items.concat({
+				id: items.length,
 				name,
 				type: toolType,
 				location
 			})
 
+			storage.saveItems(items)
 			const totalNumberOfPage = getTotalNumberOfPage(items.length, pageSize)
-
+			
 			return {
 				...state,
+				items: items,
 				totalNumberOfPage: totalNumberOfPage,
 				pageIndex: totalNumberOfPage
 			}
