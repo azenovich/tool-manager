@@ -4,7 +4,7 @@ import ToolItem from 'components/ToolItem'
 
 class ToolsTable extends Component {
 	render() {
-		const { pageIndex, pageSize } = this.props
+		const { pageIndex, pageSize, history } = this.props
 		const shift = pageIndex * pageSize
 		const items = this.props.items.slice(shift, shift + pageSize)
 
@@ -20,8 +20,8 @@ class ToolsTable extends Component {
 								const { id, name, type, location } = tool
 
 								return (
-									<ToolItem key={id} name={name} 
-										type={type} location={location} />
+									<ToolItem key={id} id={id} name={name} 
+										type={type} location={location} history={history} />
 								)
 							})
 						}

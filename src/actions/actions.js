@@ -15,3 +15,13 @@ export const addNewTool = ({ name, type: toolType, location }) => {
 		location
 	}
 }
+
+export const editTool = ({ id, name, type: toolType, location }) => {
+	return {
+		type: actionConstants.EDIT_TOOL,
+		id,
+		name, 
+		toolType,
+		location
+	}
+}

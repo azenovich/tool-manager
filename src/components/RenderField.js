@@ -5,7 +5,8 @@ class RenderField extends Component {
 		const { input, label, type } = this.props
 
 		return (
-			<input {...input} placeholder={label} type={type} class="RenderField__input" />
+			<input {...input} placeholder={label}
+				type={type} class="RenderField__input" />
 		)
 	}
 

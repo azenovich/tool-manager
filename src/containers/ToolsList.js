@@ -30,7 +30,7 @@ class ToolsList extends Component {
 
 	render() {
 		const { items, pageIndex, totalNumberOfPage, pageSize } = this.props.tools
-		const { displayToolPage } = this.props
+		const { displayToolPage, history } = this.props
 
 		return (
 			<div className="ToolsList">
@@ -44,7 +44,7 @@ class ToolsList extends Component {
 					</Button>
 				</div>
 
-				<ToolsTable items={items} pageIndex={pageIndex} pageSize={pageSize} />
+				<ToolsTable items={items} history={history} pageIndex={pageIndex} pageSize={pageSize} />
 				<ToolsPageNavigation pageIndex={pageIndex} totalNumberOfPage={totalNumberOfPage} 
 					displayToolPage={displayToolPage} />
 			</div>

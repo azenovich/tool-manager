@@ -6,61 +6,62 @@ import PropTypes from 'prop-types'
 
 import Title from 'components/Title'
 import AddUpdateToolForm from 'containers/AddUpdateToolForm'
-import { addNewTool } from 'actions/actions'
+import { addNewTool, editTool } from 'actions/actions'
 
 class AddUpdateTool extends Component {
 	static propTypes = {
-		history: PropTypes.object.isRequired
+		history: PropTypes.object.isRequired,
+		match: PropTypes.object.isRequired
 	}
 
-	constructor(props) {
-		super(props)
+	_findItem() {
+		let { toolId } = this.props.match.params
+		toolId = +toolId
 
-		this.handleSave = this.handleSave.bind(this)
-		this.handleCancel = this.handleCancel.bind(this)
-	}
+		if (toolId) {
+			const { items } = this.props.tools
 
-	handleSave(values) {
-		const { addNewTool, history } = this.props
+			if (items) {
+				return items.find((tool) => {
+					if (tool.id === toolId) {
+						return true
+					}
 
-		addNewTool(values)
-		history.replace('/');
-	}
+					return false
+				})
+			}
+		}
 
-	handleCancel(e) {
-		e.preventDefault()
-		const { history } = this.props
-		
-		history.push('/');
+		return null
 	}
 
 	render() {
-		const { isUpdated } = this.props
+		const { history, addNewTool, editTool } = this.props
+		let item = this._findItem()
 
 		return (
 			<div class="AddUpdateTool">
 				<Title className="AddUpdateTool__title">
-					{ isUpdated ? 'Edit Tool' : 'Add Tool'}
+					{ item ? 'Edit Tool' : 'Add Tool' }
 				</Title>
-				<AddUpdateToolForm handleSave={this.handleSave} handleCancel={this.handleCancel}>
+				<AddUpdateToolForm item={item} history={history} 
+					addNewTool={addNewTool} editTool={editTool}>
 				</AddUpdateToolForm>
 			</div>
 		);
 	}
 }
 
-AddUpdateTool.defaultProps = {
-	isUpdated: false
-}
-
-const mapStateToProps = () => {
+const mapStateToProps = (state) => {
 	return { 
+		tools: state.toolsReducer
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		addNewTool: bindActionCreators(addNewTool, dispatch)
+		addNewTool: bindActionCreators(addNewTool, dispatch),
+		editTool: bindActionCreators(editTool, dispatch)
 	}
 }
 

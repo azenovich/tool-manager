@@ -8,12 +8,63 @@ import RenderField from 'components/RenderField'
 import addUpdateToolValidator from 'validators/addUpdateToolValidator'
 
 class AddUpdateToolForm extends Component {
+	constructor(props) {
+		super(props)
+
+		this.handleSave = this.handleSave.bind(this)
+		this.handleCancel = this.handleCancel.bind(this)
+	}
+
+	componentDidMount() {
+		this._updateDate()
+	}
+
+	_updateDate() {
+		if (this.props.item) {
+			const { name, type, location } = this.props.item
+
+			this.props.initialize({
+				name,
+				type,
+				location
+			})
+		} else {
+			this.props.initialize({
+				name: '',
+				type: '',
+				location: ''
+			})
+		}
+	}
+
+	handleSave(values) {
+		const { addNewTool, editTool, history, item } = this.props
+
+		if (item) {
+			editTool({
+				...values,
+				id: item.id
+			})
+		} else {
+			addNewTool(values)
+		}
+
+		history.push('/')
+	}
+
+	handleCancel(e) {
+		e.preventDefault()
+		const { history } = this.props
+		
+		history.push('/');
+	}
+
 	render() {
-		const { handleSubmit, handleSave, handleCancel, valid  } = this.props
+		const { handleSubmit, valid, submitting } = this.props
 
 		return (
-			<div class="AddUpdateToolForm">
-				<form onSubmit={handleSubmit(handleSave)}>
+			<div  class="AddUpdateToolForm">
+				<form onSubmit={handleSubmit(this.handleSave)}>
 					<div className="AddUpdateToolForm__form">
 						<Field
 							name="name"
@@ -21,6 +72,7 @@ class AddUpdateToolForm extends Component {
 							type="text"
 							label="Name"
 							placeholder="Name"
+							value="123"
 						/>
 						<Field 
 							name="type" 
@@ -45,10 +97,12 @@ class AddUpdateToolForm extends Component {
 						</Field>
 					</div>
 					<div className="AddUpdateToolForm__buttons">
-						<Button isDisabled={!valid} className="Button Button__success AddUpdateToolForm__save" >
+						<Button isDisabled={!valid || submitting } 
+							className="Button Button__success AddUpdateToolForm__save" >
 							Save
 						</Button>
-						<Button handleClick={handleCancel} className="Button Button__warning AddUpdateToolForm__cancel">
+						<Button handleClick={this.handleCancel} 
+							className="Button Button__warning AddUpdateToolForm__cancel">
 							Cancel
 						</Button>
 					</div>

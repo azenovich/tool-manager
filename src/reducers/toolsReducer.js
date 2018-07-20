@@ -33,7 +33,7 @@ const toolsReducer = (state = initState, action) => {
 			let items = state.items
 			
 			items = items.concat({
-				id: items.length,
+				id: items.length + 1,
 				name,
 				type: toolType,
 				location
@@ -47,6 +47,39 @@ const toolsReducer = (state = initState, action) => {
 				items: items,
 				totalNumberOfPage: totalNumberOfPage,
 				pageIndex: totalNumberOfPage
+			}
+		}
+
+		case actionConstants.EDIT_TOOL: {
+			const { id, name, toolType, location } = action
+
+			const { pageSize, items } = state
+
+			let indexItem = -1;
+			const item = items.find((item, index) => {
+				if (item.id === id) {
+					indexItem = index
+					return true
+				}	
+
+				return false
+			})
+
+			let pageIndex = 0
+			if (item && indexItem !== -1) {
+				item.id = id
+				item.name = name
+				item.type = toolType
+				item.location = location
+
+				pageIndex = Math.floor(indexItem  / pageSize)
+				storage.saveItems(items)
+			} 		
+
+			return {
+				...state,
+				items: items,
+				pageIndex: pageIndex
 			}
 		}
 

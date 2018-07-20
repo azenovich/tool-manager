@@ -4,7 +4,14 @@ class ToolItem extends Component {
 	constructor(props) {
 		super(props)
 
-		
+		this.handleClick = this.handleClick.bind(this)
+	}
+
+	handleClick(e) {
+		e.preventDefault()
+		const { id, history } = this.props
+
+		history.push(`/${id}`)
 	}
 
 	renderTableHead() {
@@ -24,7 +31,7 @@ class ToolItem extends Component {
 
 		return (
 			<tr>
-				<td>{name}</td>
+				<td onClick={this.handleClick}>{name}</td>
 				<td>{type}</td>
 				<td>{location}</td>
 			</tr>

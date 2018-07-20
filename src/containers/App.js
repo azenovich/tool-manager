@@ -17,6 +17,7 @@ class App extends Component {
 					<Switch>
 						<Route exact path="/" component={ToolsList} />
 						<Route path="/new" component={AddUpdateTool} />
+						<Route path="/:toolId" component={AddUpdateTool} />
 					</Switch>
 				</HashRouter>
 			</Provider>
