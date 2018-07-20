@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 class Title extends Component {
 	render() {
-		const { children } = this.props
+		const { children, className } = this.props
 
 		return (
-			<div className="Title">
+			<div className={`Title ${className}`}>
 				{children}
 			</div>
 		);

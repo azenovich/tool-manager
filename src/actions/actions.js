@@ -1,8 +1,17 @@
 import actionConstants from 'constants/actionConstants'
 
-export const displayToolPage = (pageSize, pageIndex) => {
+export const displayToolPage = (pageIndex) => {
 	return {
 		type: actionConstants.DISPLAY_TOOL_PAGE,
-		pageSize, pageIndex
+		pageIndex
+	}
+}
+
+export const addNewTool = ({ name, toolType, location }) => {
+	return {
+		type: actionConstants.ADD_NEW_TOOL,
+		name, 
+		toolType,
+		location
 	}
 }

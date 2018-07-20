@@ -26,16 +26,16 @@ class ToolsPageNavigation extends Component {
 	}
 
 	_changePage(pageShift) {
-		const { currentPage, displayToolPage, pageSize } = this.props
-		const pageIndex = currentPage + pageShift
+		const { displayToolPage } = this.props
+		const pageIndex = this.props.pageIndex + pageShift
 
-		displayToolPage(pageSize, pageIndex)
+		displayToolPage(pageIndex)
 	}
 
 	render() {
-		const { currentPage, totalNumberOfPage } = this.props
-		const isPreviousDisabled = currentPage === 0 ? true : false
-		const isNextDisabled = currentPage === totalNumberOfPage ? true : false
+		const { pageIndex, totalNumberOfPage } = this.props
+		const isPreviousDisabled = pageIndex === 0 ? true : false
+		const isNextDisabled = pageIndex === totalNumberOfPage ? true : false
 
 		return (
 			<ul class="ToolsPageNavigation">
@@ -44,7 +44,7 @@ class ToolsPageNavigation extends Component {
 					Previous
 				</PageItem>
 				<PageItem isCurrentPage={true}>
-					{currentPage}
+					{pageIndex}
 				</PageItem>
 				<PageItem isDisabled={isNextDisabled} 
 					handleClick={this.handleNextClick} >

@@ -8,8 +8,11 @@
 @import './components/Title.scss';
 @import './components/Button.scss';
 @import './components/PageItem.scss';
+@import './components/RenderField.scss';
 
 /* Containers */
 @import './containers/ToolsTable.scss';
 @import './containers/ToolsList.scss';
 @import './containers/ToolsPageNavigation.scss';
+@import './containers/AddUpdateTool.scss';
+@import './containers/AddUpdateToolForm.scss';

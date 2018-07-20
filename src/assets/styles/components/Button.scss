@@ -2,18 +2,23 @@
 	display: inline-block;
 	text-align: center;
 	border-radius: .25rem; 
-	padding: .375rem .75rem; 
+	padding: .700rem .9rem; 
 	border: 1px solid transparent;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	font-size: 16px;
+	color: $text-color;
+
+	&[disabled] {
+		cursor: not-allowed;
+		opacity: .65;
+	}
 
 	&__rightShift {
 		margin-right: 10%;
 	}
 
 	&__primary {
-		color: $text-color;
 		background-color: $primary-color;
 	}
 

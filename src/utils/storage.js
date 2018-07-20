@@ -4,6 +4,7 @@ import Type from 'constants/Type'
 import Location from 'constants/Location'
 
 const toolItems = []
+const storageKey = 'toolItems'
 
 for (let index = 0; index < 23; index++) {
 	toolItems.push(
@@ -17,12 +18,8 @@ for (let index = 0; index < 23; index++) {
 }
 
 const storage = {
-	setItem(items) {
-		localStorage.setItem('toolItems', JSON.stringify(items))
-	},
-	
-	getItem() {
-		const items = localStorage.getItem('toolItems')
+	getItems() {
+		const items = localStorage.getItem(storageKey)
 		if (items) {
 			return JSON.parse(items)
 		}
@@ -31,8 +28,8 @@ const storage = {
 	}
 }
 
-if (localStorage.getItem('toolItems') === null) {
-	storage.setItem(toolItems)
+if (localStorage.getItem(storageKey) === null) {
+	localStorage.setItem(storageKey, JSON.stringify(toolItems))
 }
 
 export default storage

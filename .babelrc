@@ -20,6 +20,7 @@
 					"containers": "./src/containers",
 					"reducers": "./src/reducers",
 					"store": "./src/store",
+					"validators": "./src/validators",
 					"utils": "./src/utils",
 					"underscore": ["lodash"]
 				}
