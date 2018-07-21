@@ -50,14 +50,15 @@ const webpackConfig = {
 				loader: 'file-loader?name=assets/fonts/[name].[ext]'
 			},
 			{
-				test: /\.(jpg|png|ico)$/,
+				test: /\.(jpg|png|ico|gif)$/,
 				exclude: /node_modules/,
-				loader: 'file-loader'
+				loader: 'file-loader?name=assets/images/[name].[ext]'
 			}
 		]
 	}, 
 	plugins: [ 
 		new HtmlWebpackPlugin({
+			favicon: './src/assets/images/react.png',
 			template: path.join(__dirname, './src/assets/index.html'),
 			filename: 'index.html',
 			path: outputPath

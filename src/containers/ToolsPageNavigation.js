@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PageItem from 'components/PageItem'
 
 class ToolsPageNavigation extends Component {
+	
 	constructor(props) {
 		super(props)
 

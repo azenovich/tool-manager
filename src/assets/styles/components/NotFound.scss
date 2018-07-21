@@ -1,0 +1,19 @@
+.NotFound {
+	font: normal 16px/26px Arial, sans-serif;
+    background: $text-color;
+	color: $primary-color;
+	margin: 100px 0 40px;
+	text-align: center;
+	
+	&__image {
+		width: 112px;
+	}
+
+	&__title {
+		font-size: 3rem;
+	}
+
+	&__message {
+		font-size: 1.5rem;
+	}
+}

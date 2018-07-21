@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class Button extends Component {
+	
 	render() {
 		const { children, handleClick, className, isDisabled } = this.props
 

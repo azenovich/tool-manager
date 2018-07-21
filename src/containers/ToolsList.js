@@ -11,6 +11,7 @@ import ToolsPageNavigation from 'containers/ToolsPageNavigation'
 import { displayToolPage } from 'actions/actions'
 
 class ToolsList extends Component {
+	
 	static propTypes = {
 		history: PropTypes.object.isRequired
 	}

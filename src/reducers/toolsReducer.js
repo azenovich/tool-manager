@@ -12,7 +12,8 @@ const initState = {
 	items: items,
 	totalNumberOfPage: getTotalNumberOfPage(items.length, pageSize),
 	pageIndex: 0,
-	pageSize: pageSize
+	pageSize: pageSize,
+	toolItem: null
 };
 
 const toolsReducer = (state = initState, action) => {
@@ -52,7 +53,6 @@ const toolsReducer = (state = initState, action) => {
 
 		case actionConstants.EDIT_TOOL: {
 			const { id, name, toolType, location } = action
-
 			const { pageSize, items } = state
 
 			let indexItem = -1;
@@ -80,6 +80,27 @@ const toolsReducer = (state = initState, action) => {
 				...state,
 				items: items,
 				pageIndex: pageIndex
+			}
+		}
+
+		case actionConstants.SHOW_ADD_UPDATE_TOOL_FORM: {
+			const { toolId } = action
+			const { items } = state
+			let item = null
+
+			if (toolId) {
+				item = items.find((item) => {
+					if (item.id === toolId) {
+						return true
+					}	
+	
+					return false
+				})
+			}
+
+			return {
+				...state,
+				toolItem: item
 			}
 		}
 

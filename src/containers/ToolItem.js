@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class ToolItem extends Component {
+	
 	constructor(props) {
 		super(props)
 
@@ -11,7 +12,7 @@ class ToolItem extends Component {
 		e.preventDefault()
 		const { id, history } = this.props
 
-		history.push(`/${id}`)
+		history.replace(`/${id}`)
 	}
 
 	renderTableHead() {

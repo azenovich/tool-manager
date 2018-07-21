@@ -13,6 +13,7 @@
 		color: $primary-color;
 		background-color: $text-color;
 		border: 1px solid $page-secondary-color;
+		border-radius: .30rem;
 
 		&:active {
 			background-color: $primary-color;

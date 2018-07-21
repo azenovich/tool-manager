@@ -25,3 +25,10 @@ export const editTool = ({ id, name, type: toolType, location }) => {
 		location
 	}
 }
+
+export const showAddUpdateToolForm = (toolId) => {
+	return {
+		type: actionConstants.SHOW_ADD_UPDATE_TOOL_FORM,
+		toolId
+	}
+}

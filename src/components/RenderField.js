@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
 class RenderField extends Component {
+	
 	_renderInput() {
 		const { input, label, type } = this.props
-
+		
 		return (
 			<input {...input} placeholder={label}
 				type={type} class="RenderField__input" />

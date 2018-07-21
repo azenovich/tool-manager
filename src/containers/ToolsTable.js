@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-import ToolItem from 'components/ToolItem'
+import ToolItem from 'containers/ToolItem'
 
 class ToolsTable extends Component {
+	
 	render() {
 		const { pageIndex, pageSize, history } = this.props
 		const shift = pageIndex * pageSize

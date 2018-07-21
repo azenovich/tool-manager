@@ -10,7 +10,7 @@ for (let index = 0; index < 23; index++) {
 	toolItems.push(
 		{
 			id: index + 1,
-			name: faker.name.findName(),
+			name: faker.commerce.productName(),
 			type: faker.random.arrayElement(Object.getOwnPropertyNames(Type)),
 			location: faker.random.arrayElement(Object.getOwnPropertyNames(Location))
 		}

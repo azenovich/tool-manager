@@ -6,45 +6,48 @@ import PropTypes from 'prop-types'
 
 import Title from 'components/Title'
 import AddUpdateToolForm from 'containers/AddUpdateToolForm'
-import { addNewTool, editTool } from 'actions/actions'
+import { addNewTool, editTool, showAddUpdateToolForm } from 'actions/actions'
 
 class AddUpdateTool extends Component {
+
 	static propTypes = {
 		history: PropTypes.object.isRequired,
 		match: PropTypes.object.isRequired
 	}
 
-	_findItem() {
-		let { toolId } = this.props.match.params
-		toolId = +toolId
-
-		if (toolId) {
-			const { items } = this.props.tools
-
-			if (items) {
-				return items.find((tool) => {
-					if (tool.id === toolId) {
-						return true
-					}
-
-					return false
-				})
-			}
-		}
-
-		return null
+	componentWillMount() {
+		this._showAddUpdateToolForm()	
 	}
 
+	_showAddUpdateToolForm() {
+		const { showAddUpdateToolForm } = this.props
+		let { toolId } = this.props.match.params
+		toolId = +toolId
+	
+		showAddUpdateToolForm(toolId)
+	}
+
+	componentDidUpdate() {
+		const { match, history } = this.props
+		const { toolItem } = this.props.tools
+
+		if (!toolItem && match.path === '/:toolId') {
+			history.replace('/notfound')
+		}
+	}
+	
 	render() {
-		const { history, addNewTool, editTool } = this.props
-		let item = this._findItem()
+		const { addNewTool, editTool, showAddUpdateToolForm, history } = this.props
+		const { toolItem } = this.props.tools
 
 		return (
 			<div class="AddUpdateTool">
 				<Title className="AddUpdateTool__title">
-					{ item ? 'Edit Tool' : 'Add Tool' }
+					{ toolItem ? 'Edit Tool' : 'Add Tool' }
 				</Title>
-				<AddUpdateToolForm item={item} history={history} 
+				<AddUpdateToolForm key={ toolItem ? toolItem.id : toolItem } item={toolItem} 
+					history={history}
+					showAddUpdateToolForm={showAddUpdateToolForm}
 					addNewTool={addNewTool} editTool={editTool}>
 				</AddUpdateToolForm>
 			</div>
@@ -61,7 +64,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		addNewTool: bindActionCreators(addNewTool, dispatch),
-		editTool: bindActionCreators(editTool, dispatch)
+		editTool: bindActionCreators(editTool, dispatch),
+		showAddUpdateToolForm: bindActionCreators(showAddUpdateToolForm, dispatch)
 	}
 }
 

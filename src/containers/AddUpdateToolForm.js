@@ -8,6 +8,7 @@ import RenderField from 'components/RenderField'
 import addUpdateToolValidator from 'validators/addUpdateToolValidator'
 
 class AddUpdateToolForm extends Component {
+	
 	constructor(props) {
 		super(props)
 
@@ -22,7 +23,7 @@ class AddUpdateToolForm extends Component {
 	_updateDate() {
 		if (this.props.item) {
 			const { name, type, location } = this.props.item
-
+			
 			this.props.initialize({
 				name,
 				type,
@@ -35,7 +36,7 @@ class AddUpdateToolForm extends Component {
 				location: ''
 			})
 		}
-	}
+	} 
 
 	handleSave(values) {
 		const { addNewTool, editTool, history, item } = this.props
@@ -72,7 +73,6 @@ class AddUpdateToolForm extends Component {
 							type="text"
 							label="Name"
 							placeholder="Name"
-							value="123"
 						/>
 						<Field 
 							name="type" 
