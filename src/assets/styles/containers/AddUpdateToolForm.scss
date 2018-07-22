@@ -9,15 +9,32 @@
 
 	&__buttons {
 		display: flex;
-		flex-wrap: wrap;
 		justify-content: space-between;
+
+		@include respond-to-few((mobile, phone)) {
+			justify-content: flex-start;
+			margin: 0 4rem;
+		}
 	}
 
 	&__save {
 		margin-left: 25%;
+
+		
+		@include respond-to-few((mobile, phone)) {
+			margin-left: 0;
+			text-align: center;
+			width: 100%;
+		}
 	}
 
 	&__cancel {
 		margin-right: 25%;
+
+		@include respond-to-few((mobile, phone)) {
+			margin-right: 0;
+			text-align: center;
+			width: 100%;
+		}
 	}
 }

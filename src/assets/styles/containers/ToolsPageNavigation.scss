@@ -3,4 +3,9 @@
 	border-radius: .25rem;
 	justify-content: flex-end;
 	margin-right: 10%;
+
+	@include respond-to-few((mobile, phone)) {
+		justify-content: center;
+		margin-right: 2.5rem;
+	}
 }
