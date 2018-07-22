@@ -5,15 +5,29 @@
 	margin: 100px 0 40px;
 	text-align: center;
 	
-	&__image {
-		width: 112px;
+	&__header-image {
+		width: 30rem;
+
+		@include respond-to-few((mobile, phone)) {
+			width: 65%;
+		}
 	}
 
 	&__title {
-		font-size: 3rem;
+		font-size: 4rem;
+
+		@include respond-to-few((mobile, phone)) {
+			font-size: 2.8rem;
+			line-height: 3rem;
+		}
 	}
 
 	&__message {
-		font-size: 1.5rem;
+		font-size: 2rem;
+
+		@include respond-to-few((mobile, phone)) {
+			font-size: 1.8rem;
+			line-height: 2rem;
+		}
 	}
 }
