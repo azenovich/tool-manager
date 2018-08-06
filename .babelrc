@@ -13,17 +13,16 @@
 				"alias": {
 					"src": "./src",
 					"actions": "./src/actions",
-					"assets": "./src/assets",
+					"assets": "./public/",
 					"components": "./src/components",
 					"constants": "./src/constants",
 					"containers": "./src/containers",
-					"images": "./src/assets/images",
+					"images": "./public/images",
 					"reducers": "./src/reducers",
-					"styles": "./src/assets/styles",
+					"styles": "./public/styles",
 					"store": "./src/store",
 					"validators": "./src/validators",
-					"utils": "./src/utils",
-					"underscore": ["lodash"]
+					"utils": "./src/utils"
 				}
 			}
 		]

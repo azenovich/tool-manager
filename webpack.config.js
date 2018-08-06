@@ -58,8 +58,8 @@ const webpackConfig = {
 	}, 
 	plugins: [ 
 		new HtmlWebpackPlugin({
-			favicon: './src/assets/images/react.png',
-			template: path.join(__dirname, './src/assets/index.html'),
+			favicon: './public/images/react.png',
+			template: path.join(__dirname, './public/index.html'),
 			filename: 'index.html',
 			path: outputPath
 		}),
