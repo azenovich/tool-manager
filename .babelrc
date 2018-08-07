@@ -5,26 +5,6 @@
 		"stage-0"
 	],
 	"plugins": [
-		"react-hot-loader/babel",
-		"react-html-attrs",
-		[
-			"module-resolver", {
-				"root": ["./src"],
-				"alias": {
-					"src": "./src",
-					"actions": "./src/actions",
-					"assets": "./public/",
-					"components": "./src/components",
-					"constants": "./src/constants",
-					"containers": "./src/containers",
-					"images": "./public/images",
-					"reducers": "./src/reducers",
-					"styles": "./public/styles",
-					"store": "./src/store",
-					"validators": "./src/validators",
-					"utils": "./src/utils"
-				}
-			}
-		]
+		"react-hot-loader/babel"
 	]
 }

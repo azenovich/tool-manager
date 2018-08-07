@@ -47,12 +47,12 @@ const webpackConfig = {
 			{
 				test: /\.(eot|svg|ttf|woff|woff2)$/,
 				exclude: /node_modules/,
-				loader: 'file-loader?name=assets/fonts/[name].[ext]'
+				loader: 'file-loader?name=fonts/[name].[ext]'
 			},
 			{
 				test: /\.(jpg|png|ico|gif)$/,
 				exclude: /node_modules/,
-				loader: 'file-loader?name=assets/images/[name].[ext]'
+				loader: 'file-loader?name=images/[name].[ext]'
 			}
 		]
 	}, 
@@ -68,7 +68,7 @@ const webpackConfig = {
 	],
 	devServer: {
 		contentBase: outputPath,
-		port: 8888,
+		port: 8080,
 		historyApiFallback: true,
 		inline: true,
 		hot: true,

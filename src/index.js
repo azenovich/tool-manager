@@ -2,13 +2,13 @@ import React from 'react'
 import { render } from 'react-dom'
 import { setConfig } from 'react-hot-loader'
 
-import toolsManagerStore from 'store/toolsManagerStore'
+import App from './features/app'
 
-import App from 'containers/App'
-
-window.store = toolsManagerStore
+import '../public/images/react.png'
 
 setConfig({ logLevel: 'debug' })
+
+// TODO: ask about local styles.
 
 render (
 	<App />,

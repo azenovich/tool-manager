@@ -1,8 +1,9 @@
 import React from 'react'
 
+import '../../../../public/images/notfound.gif'
 import './component.scss'
 
-const PageComponent = (props) => {
+const NotFoundPageComponent = (props) => {
 	const { title, children, imageSrc } = props;
 
 	return (
@@ -21,4 +22,4 @@ const PageComponent = (props) => {
 	);
 }
 
-export default PageComponent
+export default NotFoundPageComponent

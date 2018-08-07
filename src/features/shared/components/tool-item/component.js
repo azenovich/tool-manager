@@ -1,8 +1,6 @@
 import React from 'react'
 
-import './component.scss'
-
-const ToolItemHead = (props) => {
+const ToolItemHeadComponent = (props) => {
 	const { name, type, location } = props
 
 	return (
@@ -14,7 +12,7 @@ const ToolItemHead = (props) => {
 	)
 }
 
-const ToolItemBody = (props) => {
+const ToolItemBodyComponent = (props) => {
 	const { name, type, location, handleClick } = props
 
 	return (
@@ -30,16 +28,16 @@ const ToolItemComponent = (props) => {
 	const { isHead, name, type, location } = props
 	if (isHead) {
 		return (
-			<ToolItemHead name={name} type={type} 
+			<ToolItemHeadComponent name={name} type={type} 
 				location={location}>
-			</ToolItemHead>
+			</ToolItemHeadComponent>
 		)
 	} else {
 		const { handleClick } = props
 		return (
-			<ToolItemBody name={name} type={type} 
+			<ToolItemBodyComponent name={name} type={type} 
 				location={location} handleClick={handleClick}>
-			</ToolItemBody>
+			</ToolItemBodyComponent>
 		)
 	}
 }

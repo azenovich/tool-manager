@@ -3,10 +3,10 @@ import React from 'react'
 import './component.scss'
 
 const ButtonComponent = (props) => {
-	const { children, handleClick, isDisabled, className } = props
+	const { children, handleClick, isDisabled, classNames } = props
 
 	return (
-		<button className={ ['Button', className].join(' ') } onClick={handleClick} disabled={isDisabled} >
+		<button className={ ['Button', ...classNames].join(' ') } onClick={handleClick} disabled={isDisabled} >
 			{children}
 		</button>
 	);

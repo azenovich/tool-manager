@@ -3,8 +3,8 @@ import React from 'react'
 import './component.scss'
 
 const PageItemComponent = (props) => {
-	const { children, isCurrentPage, isDisabled, handleClick } = props
-	const itemClassName = isDisabled ? 'PageItem__disabled' : ''
+	const { children, isCurrentPage, handleClick } = props
+	const itemClassName = !handleClick && !isCurrentPage ? 'PageItem__disabled' : ''
 	const linkClassName = isCurrentPage ? 'PageItem__link-current' : ''
 
 	return (

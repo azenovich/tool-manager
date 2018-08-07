@@ -7,7 +7,7 @@ const RenderInputComponent = (props) => {
 
 	return (
 		<input {...input} placeholder={label}
-			type={type} class={className} />
+			type={type} className={className} />
 	)
 }
 
@@ -35,7 +35,7 @@ const choiceRender = (props) => {
 			)
 		}
 		default: {
-			const { label } = this.props
+			const { label } = props
 
 			return (
 				<RenderInputComponent input={input} label={label} 
