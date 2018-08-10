@@ -5,8 +5,6 @@ import { Query, Mutation } from 'react-apollo'
 import PropTypes from 'prop-types'
 
 // TODO: https://launchpad.graphql.com/0vm581j9x5 <- My IMPLEMENTATION!!!
-// TODO: Refactoring. Move to shared folder
-import { GET_TOOLS_PAGINATION } from '../tool-list/query'
 import { GET_TOOL } from './query'
 import { ADD_TOOL, UPDATE_TOOL } from './mutation'
 import ToolAddEditComponent from './component'
@@ -71,14 +69,10 @@ class ToolAddEditContainer extends Component {
 		let { toolId } = match.params
 		toolId = +toolId
 		
+		// Add tool
 		if (!toolId) {
 			return (
-				<Mutation mutation={ADD_TOOL}
-					update={(cache, { data: { addTool } }) => {
-						// TODO: pageIndex to query parameters.!!!
-						console.log(cache.readQuery({ query: GET_TOOLS_PAGINATION, variables: { pageIndex: 0, pageSize: 5 } }));
-					}}
-				>
+				<Mutation mutation={ADD_TOOL}>
 					{
 						(addTool) => {
 
@@ -95,6 +89,7 @@ class ToolAddEditContainer extends Component {
 			)
 		}
 
+		// Update tool
 		return (
 			<Query query={GET_TOOL} variables={{ id: toolId }}>
 				{
