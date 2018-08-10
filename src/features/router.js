@@ -6,6 +6,7 @@ import { ToolListContainer, ToolAddEditContainer, NotFoundPageContainer } from '
 import './shared/styles/index.scss'
 
 // TODO: ask about redirect...
+// TODO: ask about difference between react-router & react-router-dom
 
 const Router = () => (
 	<BrowserRouter>

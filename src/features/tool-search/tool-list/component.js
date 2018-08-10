@@ -6,9 +6,11 @@ import { TitleComponent, ButtonComponent,
 import './component.scss'
 
 const ToolListComponent = (props) => {	
-	const { items, pageIndex, pageSize, displayToolPage, 
-		totalNumberOfPage, handleAdd, handlePreviousClick, 
+	const { tools, pageIndex, pageSize, displayToolPage, 
+		totalCount ,handleAdd, handlePreviousClick, 
 		handleNextClick, handleShowAddEditTool } = props
+
+	const totalNumberOfPage = Math.floor(totalCount / pageSize)
 
 	return (
 		<div className="ToolList">
@@ -16,14 +18,13 @@ const ToolListComponent = (props) => {
 					Tool Manager
 			</TitleComponent>
 			<div className="ToolList__button-wrapper">
-				<ButtonComponent handleClick={handleAdd} 
+				<ButtonComponent handleClick={handleAdd}
 					classNames={ ['Button__primary', 'ToolList__add'] }>
 						+ Add
 				</ButtonComponent>
 			</div>
 
-			<ToolTableComponent items={items} pageIndex={pageIndex} pageSize={pageSize} 
-				handleShowAddEditTool={handleShowAddEditTool} displayToolPage={displayToolPage} />
+			<ToolTableComponent tools={tools} handleShowAddEditTool={handleShowAddEditTool} displayToolPage={displayToolPage} />
 
 			<ToolPageNavigationComponent handlePreviousClick={pageIndex > 0 ? handlePreviousClick : null} 
 				handleNextClick={totalNumberOfPage > pageIndex ? handleNextClick : null} pageIndex={pageIndex} />

@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
-import { reducer as form } from 'redux-form' 
+import { reducer as form } from 'redux-form'
 
-import toolReducer from '../features/tool-search/toolReducer'
+import { ToolListReducer } from '../features/reducer'
 
 const rootReducer = combineReducers({
 	form,
-	toolReducer
+	ToolListReducer
 })
 
 export default rootReducer

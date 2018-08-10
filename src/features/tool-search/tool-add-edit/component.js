@@ -4,16 +4,14 @@ import './component.scss'
 import { TitleComponent, ToolAddEditFormComponent } from '../../shared/components/index';
 
 const ToolAddEditComponent = (props) => {
-	const { addNewTool, editTool, showAddEditToolForm, toolItem } = props
+	const { addNewTool, editTool, isEditForm } = props
 
 	return (
 		<div className="AddUpdateTool">
 			<TitleComponent className="AddUpdateTool__title">
-				{ toolItem ? 'Edit Tool' : 'Add Tool' }
+				{ isEditForm ? 'Edit Tool' : 'Add Tool' }
 			</TitleComponent>
 			<ToolAddEditFormComponent {...props}
-				item={toolItem} 
-				showAddEditToolForm={showAddEditToolForm}
 				addNewTool={addNewTool} editTool={editTool}>
 			</ToolAddEditFormComponent>
 		</div>

@@ -5,10 +5,8 @@ import { ToolItemComponent } from '../index'
 import './component.scss'
 
 const ToolTableComponent = (props) => {
-	const { pageIndex, pageSize, handleShowAddEditTool } = props
-	let { items } = props
-	const shift = pageIndex * pageSize
-	items = items.slice(shift, shift + pageSize)
+	const { handleShowAddEditTool } = props
+	let { tools } = props
 
 	return (
 		<div className="ToolTable" >
@@ -18,7 +16,7 @@ const ToolTableComponent = (props) => {
 				</thead>
 				<tbody className="ToolTable__table-body">
 					{
-						items.map(tool => {
+						tools.map(tool => {
 							const { id, name, type, location } = tool
 
 							return (

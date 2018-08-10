@@ -29,7 +29,6 @@
 	}
 
 	&__link-current {
-		@extend .PageItem__link;
 
 		background-color: $primary-color;
 		color:	$text-color;

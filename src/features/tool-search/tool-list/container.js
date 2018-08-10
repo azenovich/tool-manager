@@ -1,12 +1,15 @@
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
+import { Query } from 'react-apollo'
 import PropTypes from 'prop-types'
 
+import { GET_TOOLS_PAGINATION } from './query'
 import ToolListComponent from './component'
 import { displayToolPage } from './action'
 
-import React, { Component } from 'react';
+const pageSize = 5
 
 class ToolListContainer extends Component {
 
@@ -32,18 +35,12 @@ class ToolListContainer extends Component {
 
 	handlePreviousClick(e) {
 		e.preventDefault()
-		const { pageIndex } = this.props
-		if (pageIndex > 0) {
-			this._changePage(-1)
-		}
+		this._changePage(-1)
 	}
 
 	handleNextClick(e) {
 		e.preventDefault()
-		const { pageIndex, totalNumberOfPage } = this.props
-		if (totalNumberOfPage > pageIndex) {
-			this._changePage(1)
-		}
+		this._changePage(1)
 	}
 
 	handleShowAddEditTool(id) {
@@ -59,23 +56,53 @@ class ToolListContainer extends Component {
 	}
 
 	render() {
+		const { pageIndex } = this.props
+
 		return (
-			<ToolListComponent {...this.props} 
-				handleAdd={this.handleAdd} 
-				handlePreviousClick={this.handlePreviousClick} 
-				handleNextClick={this.handleNextClick} 
-				handleShowAddEditTool={this.handleShowAddEditTool} />
-		);
+			<Query query={GET_TOOLS_PAGINATION} variables={{ pageIndex: pageIndex, pageSize: pageSize }} >
+				{
+					(response) => {
+						const { loading, error, data } = response
+
+						if (loading) {
+							return (
+								<p> Loading... </p>
+							)
+						}
+
+						if (error) {
+							return (
+								<p>  Error: {error.message} </p>
+							)
+						}
+
+						const { tools, totalCount } = data.toolsPagination
+						return (
+							
+							<ToolListComponent
+								totalCount={totalCount}
+								pageIndex={pageIndex}
+								pageSize={pageSize}
+								tools={tools}
+								handleAdd={this.handleAdd} 
+								handlePreviousClick={this.handlePreviousClick} 
+								handleNextClick={this.handleNextClick} 
+								handleShowAddEditTool={this.handleShowAddEditTool} />
+						)
+					}
+				}
+			</Query>
+		)
 	}
 }
 
 const mapStateToProps = (state) => {
-	return state.toolReducer
+	return state.ToolListReducer
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		displayToolPage: bindActionCreators(displayToolPage, dispatch)
+		displayToolPage: bindActionCreators(displayToolPage, dispatch),
 	}
 }
 
