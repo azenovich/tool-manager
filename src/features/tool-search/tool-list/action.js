@@ -1,4 +1,4 @@
-import actionType from '../../shared/constants/actionType'
+import { actionType } from './constants'
 
 export const displayToolPage = (pageIndex) => {
 	return {

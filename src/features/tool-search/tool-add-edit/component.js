@@ -1,19 +1,18 @@
 import React from 'react'
 
+import { TitleComponent } from '../shared/title'
+
 import './component.scss'
-import { TitleComponent, ToolAddEditFormComponent } from '../../shared/components/index';
 
 const ToolAddEditComponent = (props) => {
-	const { addNewTool, editTool, isEditForm } = props
+	const { title, children } = props
 
 	return (
-		<div className="AddUpdateTool">
-			<TitleComponent className="AddUpdateTool__title">
-				{ isEditForm ? 'Edit Tool' : 'Add Tool' }
+		<div className="ToolAddEdit">
+			<TitleComponent className="ToolAddEdit__title">
+				{title}
 			</TitleComponent>
-			<ToolAddEditFormComponent {...props}
-				addNewTool={addNewTool} editTool={editTool}>
-			</ToolAddEditFormComponent>
+			{children}
 		</div>
 	)
 }

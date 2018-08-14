@@ -1,4 +1,4 @@
-import actionType from '../../shared/constants/actionType'
+import { actionType } from './constants'
 
 const initState = {
 	pageIndex: 0

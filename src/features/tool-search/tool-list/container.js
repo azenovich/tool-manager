@@ -5,8 +5,8 @@ import { withRouter } from 'react-router-dom'
 import { Query } from 'react-apollo'
 import PropTypes from 'prop-types'
 
-import { GET_TOOLS_PAGINATION } from './query'
 import ToolListComponent from './component'
+import { GET_TOOLS_PAGINATION } from './query'
 import { displayToolPage } from './action'
 
 const pageSize = 5
@@ -97,7 +97,7 @@ class ToolListContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-	return state.ToolListReducer
+	return state.Reducer.ToolListReducer
 }
 
 const mapDispatchToProps = (dispatch) => {

@@ -22,10 +22,10 @@ const httpLink = new HttpLink({
 
 const cache = new InMemoryCache()
 
-const client = new ApolloClient({
+const Client = new ApolloClient({
 	link: httpLink,
 	cache: cache,
 	defaultOptions: defaultOptions
 });
 
-export default client
+export default Client

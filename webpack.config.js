@@ -41,7 +41,13 @@ const webpackConfig = {
 					'style-loader',
 					{ loader: 'css-loader', options: { importLoaders: 1 } },
 					'postcss-loader',
-					'sass-loader'
+					{
+						loader: 'sass-loader',
+						options: {
+							data: '@import "index.scss";',
+							includePaths: [__dirname, './public/styles']
+						}
+					}
 				]
 			},
 			{

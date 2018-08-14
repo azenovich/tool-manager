@@ -1,8 +1,0 @@
-export { default as ButtonComponent } from './button/component'
-export { default as PageItemComponent } from './page-item/component'
-export { default as RenderFieldComponent} from './render-field/component'
-export { default as TitleComponent } from './title/component'
-export { default as ToolItemComponent } from './tool-item/component'
-export { default as ToolPageNavigationComponent } from './tool-page-navigation/component'
-export { default as ToolTableComponent } from './tool-table/component'
-export { default as ToolAddEditFormComponent } from './tool-add-edit-form/component'

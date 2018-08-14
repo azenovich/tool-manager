@@ -1,7 +1,9 @@
 import React from 'react'
 
-import { TitleComponent, ButtonComponent, 
-	ToolTableComponent, ToolPageNavigationComponent } from '../../shared/components/index'
+import { TitleComponent } from '../shared/title'
+import { ButtonComponent } from '../shared/button'
+import { ToolTableComponent } from './tool-table'
+import { ToolPageNavigationComponent } from './tool-page-navigation'
 
 import './component.scss'
 

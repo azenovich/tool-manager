@@ -1,23 +1,12 @@
 import React, { Component } from 'react'
-import { reduxForm } from 'redux-form'
 import { withRouter } from 'react-router-dom'
 import { Query, Mutation } from 'react-apollo'
 import PropTypes from 'prop-types'
 
-// TODO: https://launchpad.graphql.com/0vm581j9x5 <- My IMPLEMENTATION!!!
+import ToolAddEditComponent from './component'
 import { GET_TOOL } from './query'
 import { ADD_TOOL, UPDATE_TOOL } from './mutation'
-import ToolAddEditComponent from './component'
-import toolAddEditValidation from './validation'
-
-// TODO: Refactor. Move to container.
-// TODO: Ask about shared folder and related container or component to only one -> feature/subfeature.
-const ToolAddEditComponentWrapper = reduxForm({
-	form: 'addUpdateToolForm',
-	validate: toolAddEditValidation,
-	enableReinitialize: true
-})(ToolAddEditComponent)
-
+import { ToolAddEditFormContainer } from './tool-add-edit-form'
 
 class ToolAddEditContainer extends Component {
 
@@ -66,28 +55,31 @@ class ToolAddEditContainer extends Component {
 
 	render() {
 		const { match } = this.props
-		let { toolId } = match.params
-		toolId = +toolId
-		
+		const { path } = match
+
 		// Add tool
-		if (!toolId) {
+		if (path === '/new') {
 			return (
 				<Mutation mutation={ADD_TOOL}>
 					{
 						(addTool) => {
 
 							return (
-								<ToolAddEditComponentWrapper
-									initialValues={null}
-									isEditForm={false}
-									handleSave={this._submitToolFormBinder(addTool, null)} 
-									handleCancel={this.handleCancel} />	
+								<ToolAddEditComponent title="Add Tool">
+									<ToolAddEditFormContainer
+										initialValues={null}
+										handleSave={this._submitToolFormBinder(addTool, null)} 
+										handleCancel={this.handleCancel} />	
+								</ToolAddEditComponent>
 							)
 						}
 					}
 				</Mutation>
 			)
 		}
+		
+		let { toolId } = match.params
+		toolId = +toolId
 
 		// Update tool
 		return (
@@ -119,12 +111,12 @@ class ToolAddEditContainer extends Component {
 							<Mutation mutation={UPDATE_TOOL}>
 								{
 									(updateTool) => (
-										
-										<ToolAddEditComponentWrapper
-											initialValues={tool}
-											isEditForm={tool ? true : false}
-											handleSave={this._submitToolFormBinder(updateTool, tool.id)} 
-											handleCancel={this.handleCancel} />	
+										<ToolAddEditComponent title="Edit Tool">
+											<ToolAddEditFormContainer
+												initialValues={tool}
+												handleSave={this._submitToolFormBinder(updateTool, tool.id)} 
+												handleCancel={this.handleCancel} />	
+										</ToolAddEditComponent>
 									)
 								}
 							</Mutation>
