@@ -1,11 +1,8 @@
-import { combineReducers } from 'redux'
-import { reducer as form } from 'redux-form'
+import { combineReducers } from 'redux';
+import { reducer as form } from 'redux-form';
 
-import { Reducer } from '../features'
-
-const RootReducer = combineReducers({
-	form,
-	Reducer
+const rootReducer = combineReducers({
+	form
 })
 
-export default RootReducer
+export default rootReducer;

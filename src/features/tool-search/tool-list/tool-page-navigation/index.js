@@ -1,1 +1,1 @@
-export { default as ToolPageNavigationComponent } from './component'
+export { default } from './component';

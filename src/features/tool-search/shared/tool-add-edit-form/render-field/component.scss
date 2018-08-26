@@ -1,8 +1,7 @@
 .RenderField {
-
 	margin-bottom: 1rem;
 
-	&__label {
+	&__Label {
 		display: inline-block;
 		margin-bottom: .5rem;
 		color: $white-color;
@@ -11,7 +10,7 @@
 		padding: .375rem .75rem;
 	}
 
-	&__input {
+	&__Input {
 		width: 100%;
 		display: block;
 		padding: .375rem .75rem;
@@ -22,7 +21,7 @@
 		border: 1px solid $field-secondary-color;
 	}
 
-	&__error {
+	&__Error {
 		display: block;
 		width: 100%;
 		font-size: 90%;

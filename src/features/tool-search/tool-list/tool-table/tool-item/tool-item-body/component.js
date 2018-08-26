@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 
 const ToolItemBodyComponent = (props) => {
-	const { name, type, location, handleClick } = props
+	const { name, type, location, onClick } = props
 
 	return (
 		<tr>
-			<td onClick={handleClick}>{name}</td>
+			<td onClick={onClick}>{name}</td>
 			<td>{type}</td>
 			<td>{location}</td>
 		</tr>
 	)
 }
 
-export default ToolItemBodyComponent
+export default ToolItemBodyComponent;

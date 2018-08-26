@@ -1,1 +1,1 @@
-export { default as ToolItemBodyComponent } from './component'
+export { default } from './component';

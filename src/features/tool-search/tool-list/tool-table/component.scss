@@ -1,7 +1,7 @@
 .ToolTable {
 	padding: 0 5%;
 
-	&__table {
+	&__Table {
 		width: 100%;
 		max-width: 100%;
 		border-collapse: collapse;
@@ -11,7 +11,7 @@
 			padding: .75rem;
 		}
 
-		&-head {
+		&-Head {
 			background-color: $primary-color;
 			color: $text-color;
 
@@ -21,8 +21,7 @@
 			}
 		}
 
-		&-body {
-
+		&-Body {
 			& > tr:nth-child(even) {
 				background-color: $table-secondary-color;
 			}

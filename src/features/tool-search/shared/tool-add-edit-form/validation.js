@@ -1,4 +1,4 @@
-const ToolAddEditFormValidation = (values) => {
+const toolAddEditFormValidation = (values) => {
 	const errors = {}
 
 	if (!values.name) { 
@@ -20,4 +20,4 @@ const ToolAddEditFormValidation = (values) => {
 	return errors
 }
 
-export default ToolAddEditFormValidation
+export default toolAddEditFormValidation

@@ -1,15 +1,4 @@
-import gql from 'graphql-tag'
-
-export const GET_TOOLS = gql`
-	query GetTools {
-		tools {
-			id,
-			name,
-			type,
-			location
-		}
-	}
-`
+import gql from 'graphql-tag';
 
 export const GET_TOOLS_PAGINATION = gql`
 	query GetToolsPagination($pageIndex: Int!, $pageSize: Int!) {
@@ -25,4 +14,4 @@ export const GET_TOOLS_PAGINATION = gql`
 			totalCount
 		}
 	}
-`
+`;

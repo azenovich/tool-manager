@@ -1,1 +1,1 @@
-export { default as PageItemComponent } from './component'
+export { default } from './component';

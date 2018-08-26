@@ -1,4 +1,4 @@
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
 
 export const GET_TOOL = gql`
 	query GetTool($id: Int!) {
@@ -9,4 +9,4 @@ export const GET_TOOL = gql`
 			location
 		}
 	}
-`
+`;

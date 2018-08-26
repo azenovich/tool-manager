@@ -1,37 +1,52 @@
-import React from 'react'
+import React from 'react';
 
-import { TitleComponent } from '../shared/title'
-import { ButtonComponent } from '../shared/button'
-import { ToolTableComponent } from './tool-table'
-import { ToolPageNavigationComponent } from './tool-page-navigation'
+import { default as Title } from '../shared/title';
+import { default as Button } from '../shared/button';
+import { default as ToolTable } from './tool-table';
+import { default as ToolPageNavigation } from './tool-page-navigation';
 
-import './component.scss'
+import './component.scss';
 
-const ToolListComponent = (props) => {	
-	const { tools, pageIndex, pageSize, displayToolPage, 
-		totalCount ,handleAdd, handlePreviousClick, 
-		handleNextClick, handleShowAddEditTool } = props
+const ToolListComponent = (props) => {
+	const { loading, error, data } = props
+
+	if (loading) {
+		return (
+			<p> Loading... </p>
+		)
+	}
+
+	if (error) {
+		return (
+			<p>  Error: {error.message} </p>
+		)
+	}
+
+	const { tools, totalCount } = data.toolsPagination
+	const { pageIndex, pageSize, displayToolPage, 
+		onAdd, onPreviousClick, 
+		onNextClick, onShow } = props
 
 	const totalNumberOfPage = Math.floor(totalCount / pageSize)
 
 	return (
 		<div className="ToolList">
-			<TitleComponent>
+			<Title>
 					Tool Manager
-			</TitleComponent>
-			<div className="ToolList__button-wrapper">
-				<ButtonComponent handleClick={handleAdd}
-					classNames={ ['Button__primary', 'ToolList__add'] }>
+			</Title>
+			<div className="ToolList__Button-Wrapper">
+				<Button onClick={onAdd}
+					classNames={ ['Button__Primary', 'ToolList__Add'] }>
 						+ Add
-				</ButtonComponent>
+				</Button>
 			</div>
 
-			<ToolTableComponent tools={tools} handleShowAddEditTool={handleShowAddEditTool} displayToolPage={displayToolPage} />
+			<ToolTable tools={tools} onShow={onShow} displayToolPage={displayToolPage} />
 
-			<ToolPageNavigationComponent handlePreviousClick={pageIndex > 0 ? handlePreviousClick : null} 
-				handleNextClick={totalNumberOfPage > pageIndex ? handleNextClick : null} pageIndex={pageIndex} />
+			<ToolPageNavigation onPreviousClick={pageIndex > 0 ? onPreviousClick : null} 
+				onNextClick={totalNumberOfPage > pageIndex ? onNextClick : null} pageIndex={pageIndex} />
 		</div>
 	)
 }
 
-export default ToolListComponent
+export default ToolListComponent;

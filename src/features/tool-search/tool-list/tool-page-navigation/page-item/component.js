@@ -1,16 +1,16 @@
-import React from 'react'
+import React from 'react';
 
-import './component.scss'
+import './component.scss';
 
 const PageItemComponent = (props) => {
-	const { children, isCurrentPage, handleClick } = props
-	const itemClassName = !handleClick && !isCurrentPage ? 'PageItem__disabled' : ''
-	const linkClassName = isCurrentPage ? 'PageItem__link-current' : ''
+	const { children, isCurrentPage, onClick } = props
+	const itemClassName = !onClick && !isCurrentPage ? 'PageItem__Disabled' : ''
+	const linkClassName = isCurrentPage ? 'PageItem__Link-Current' : ''
 
 	return (
 		<li className={ ['PageItem', itemClassName].join(' ') }>
-			<a className={ ['PageItem__link', linkClassName].join(' ') } 
-				onClick={handleClick} href="#" >
+			<a className={ ['PageItem__Link', linkClassName].join(' ') } 
+				onClick={onClick} href="#" >
 				{children}
 			</a>
 		</li>

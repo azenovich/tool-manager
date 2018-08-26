@@ -6,8 +6,9 @@ import { ApolloProvider } from 'react-apollo'
 import { Provider } from 'react-redux'
 import { hot } from 'react-hot-loader'
 
-import { Client, Store } from './core'
-import { ToolListContainer, ToolAddEditContainer, NotFoundPageContainer } from './features'
+import { client, store } from './core'
+import { default as ToolSearch } from './features/tool-search'
+import { default as NotFoundPage } from './features/not-found/not-found-page'
 
 import '../public/images/react.png'
 import '../public/styles/base.scss'
@@ -15,20 +16,15 @@ import '../public/styles/index.scss'
 
 setConfig({ logLevel: 'debug' })
 
-// TODO: ask about local styles.
-// TODO: ask about redirect...
-// TODO: ask about difference between react-router & react-router-dom
-
 let App = () => {
 	return (
-		<ApolloProvider client={Client} >
-			<Provider key={ module.hot ? Date.now() : Store } store={Store} >
+		<ApolloProvider client={client} >
+			<Provider key={ module.hot ? Date.now() : store } store={store} >
 				<BrowserRouter>
 					<Switch>
-						<Route exact={true} path="/" component={ToolListContainer} />
-						<Route exact={true} path="/new" component={ToolAddEditContainer} />
-						<Route exact={true} path="/notfound" component={NotFoundPageContainer} />
-						<Route exact={true} path="/:toolId" component={ToolAddEditContainer} />
+						<Route exact={true} path="/notfound" component={NotFoundPage} />
+						<Route exact={false} path="/tool" component={ToolSearch} />
+						<Redirect exact={true} path="/" to="/tool" />
 						<Redirect to="/notfound" />
 					</Switch>
 				</BrowserRouter>

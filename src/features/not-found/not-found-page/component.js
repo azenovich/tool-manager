@@ -1,25 +1,23 @@
-import React from 'react'
+import React from 'react';
 
-import '../../../../public/images/notfound.gif'
-import './component.scss'
+import '../../../../public/images/notfound.gif';
+import './component.scss';
 
-const NotFoundPageComponent = (props) => {
-	const { title, children, imageSrc } = props;
-
+const NotFoundPageComponent = () => {
 	return (
 		<div className="NotFound">
 			<div className="NotFound__header">
 				<img className="NotFound__header-image" 
-					src={imageSrc} alt={title} />
+					src="images/notfound.gif" alt="Not found" />
 				<h1 className="NotFound__title">
-					{title}
+					Page Not Found
 				</h1>
 			</div>
 			<p className="NotFound__message">
-				{children}
+				The page you are looking for could not be found.
 			</p>
 		</div>
 	);
 }
 
-export default NotFoundPageComponent
+export default NotFoundPageComponent;

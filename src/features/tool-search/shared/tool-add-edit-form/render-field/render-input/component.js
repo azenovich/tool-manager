@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const RenderInputComponent = (props) => {
 	const { input, label, type, className } = props
@@ -9,4 +9,4 @@ const RenderInputComponent = (props) => {
 	)
 }
 
-export default RenderInputComponent
+export default RenderInputComponent;

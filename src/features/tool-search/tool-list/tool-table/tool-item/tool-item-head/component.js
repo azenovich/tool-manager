@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const ToolItemHeadComponent = (props) => {
 	const { name, type, location } = props
@@ -12,4 +12,4 @@ const ToolItemHeadComponent = (props) => {
 	)
 }
 
-export default ToolItemHeadComponent
+export default ToolItemHeadComponent;

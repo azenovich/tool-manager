@@ -1,30 +1,27 @@
-import React from 'react'
+import React from 'react';
 
-import { ToolItemComponent } from './tool-item'
+import { default as ToolItem } from './tool-item';
 
-import './component.scss'
+import './component.scss';
 
 const ToolTableComponent = (props) => {
-	const { handleShowAddEditTool } = props
+	const { onShow } = props
 	let { tools } = props
 
 	return (
 		<div className="ToolTable" >
-			<table className="ToolTable__table">
-				<thead className="ToolTable__table-head">
-					<ToolItemComponent name="Name" type="Type" location="Location" isHead={true} />
+			<table className="ToolTable__Table">
+				<thead className="ToolTable__Table-Head">
+					<ToolItem name="Name" type="Type" location="Location" isHead={true} />
 				</thead>
-				<tbody className="ToolTable__table-body">
+				<tbody className="ToolTable__Table-Body">
 					{
 						tools.map(tool => {
 							const { id, name, type, location } = tool
 
 							return (
-								<ToolItemComponent key={id} id={id} name={name} 
-									type={type} location={location} handleClick={(e) => {
-										e.preventDefault();
-										handleShowAddEditTool(id)
-									}} />
+								<ToolItem key={id} id={id} name={name} 
+									type={type} location={location} onClick={onShow(id)} />
 							)
 						})
 					}
@@ -34,4 +31,4 @@ const ToolTableComponent = (props) => {
 	)
 }
 
-export default ToolTableComponent
+export default ToolTableComponent;

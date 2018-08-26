@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
 import { Query } from 'react-apollo'
 import PropTypes from 'prop-types'
 
 import ToolListComponent from './component'
 import { GET_TOOLS_PAGINATION } from './query'
-import { displayToolPage } from './action'
 
 const pageSize = 5
 
@@ -20,43 +17,46 @@ class ToolListContainer extends Component {
 	constructor(props) {
 		super(props)
 
-		this.handleAdd = this.handleAdd.bind(this)
-		this.handlePreviousClick = this.handlePreviousClick.bind(this)
-		this.handleNextClick = this.handleNextClick.bind(this)
-		this.handleShowAddEditTool = this.handleShowAddEditTool.bind(this)
+		this.onAdd = this.onAdd.bind(this)
+		this.onPreviousClick = this.onPreviousClick.bind(this)
+		this.onNextClick = this.onNextClick.bind(this)
+		this.onShow = this.onShow.bind(this)
+		this.state = {
+			pageIndex: 0
+		}
 	}
 
-	handleAdd(e) {
-		e.preventDefault()
+	onAdd() {
 		const { history } = this.props
-		
-		history.push('/new')
+		history.push('/tool/new')
 	}
 
-	handlePreviousClick(e) {
-		e.preventDefault()
+	onPreviousClick() {
 		this._changePage(-1)
 	}
 
-	handleNextClick(e) {
-		e.preventDefault()
+	onNextClick() {
 		this._changePage(1)
 	}
 
-	handleShowAddEditTool(id) {
-		const { history } = this.props
-		history.push(`/${id}`)
+	onShow(id) {
+		return () => {
+			const { history } = this.props
+			history.push(`/tool/${id}`)
+		}
 	}
 
 	_changePage(pageShift) {
-		const { displayToolPage } = this.props
-		const pageIndex = this.props.pageIndex + pageShift
+		let { pageIndex } = this.state
+		pageIndex = pageIndex + pageShift
 
-		displayToolPage(pageIndex)
+		this.setState({
+			pageIndex: pageIndex
+		})
 	}
 
 	render() {
-		const { pageIndex } = this.props
+		const { pageIndex } = this.state
 
 		return (
 			<Query query={GET_TOOLS_PAGINATION} variables={{ pageIndex: pageIndex, pageSize: pageSize }} >
@@ -64,30 +64,18 @@ class ToolListContainer extends Component {
 					(response) => {
 						const { loading, error, data } = response
 
-						if (loading) {
-							return (
-								<p> Loading... </p>
-							)
-						}
-
-						if (error) {
-							return (
-								<p>  Error: {error.message} </p>
-							)
-						}
-
-						const { tools, totalCount } = data.toolsPagination
 						return (
 							
 							<ToolListComponent
-								totalCount={totalCount}
+								loading={loading}
+								error={error}
+								data={data}
 								pageIndex={pageIndex}
 								pageSize={pageSize}
-								tools={tools}
-								handleAdd={this.handleAdd} 
-								handlePreviousClick={this.handlePreviousClick} 
-								handleNextClick={this.handleNextClick} 
-								handleShowAddEditTool={this.handleShowAddEditTool} />
+								onAdd={this.onAdd} 
+								onPreviousClick={this.onPreviousClick} 
+								onNextClick={this.onNextClick} 
+								onShow={this.onShow} />
 						)
 					}
 				}
@@ -96,18 +84,4 @@ class ToolListContainer extends Component {
 	}
 }
 
-const mapStateToProps = (state) => {
-	return state.Reducer.ToolListReducer
-}
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		displayToolPage: bindActionCreators(displayToolPage, dispatch),
-	}
-}
-
-ToolListContainer = withRouter(
-	connect(mapStateToProps, mapDispatchToProps)(ToolListContainer)
-)
-
-export default ToolListContainer
+export default withRouter(ToolListContainer);

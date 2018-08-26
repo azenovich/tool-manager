@@ -1,1 +1,1 @@
-export { default as ToolTableComponent } from './component'
+export { default } from './component';

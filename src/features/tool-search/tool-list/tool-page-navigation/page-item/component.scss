@@ -1,6 +1,5 @@
 .PageItem {
-
-	&__disabled {
+	&__Disabled {
 		pointer-events:none;
 		opacity:0.55;   
 		
@@ -10,7 +9,7 @@
 		}
 	}
 
-	&__link {
+	&__Link {
 		position: relative;
 		display: block;
 		padding: .5rem .75rem;
@@ -26,8 +25,7 @@
 		}
 	}
 
-	&__link-current {
-
+	&__Link-Current {
 		background-color: $primary-color;
 		color:	$text-color;
 

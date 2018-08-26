@@ -1,22 +1,22 @@
-import React from 'react'
+import React from 'react';
 
-import { ToolItemHeadComponent } from './tool-item-head'
-import { ToolItemBodyComponent } from './tool-item-body'
+import { default as ToolItemHead } from './tool-item-head';
+import { default as ToolItemBody } from './tool-item-body';
 
 const ToolItemComponent = (props) => {
 	const { isHead, name, type, location } = props
 	if (isHead) {
 		return (
-			<ToolItemHeadComponent name={name} type={type} 
+			<ToolItemHead name={name} type={type} 
 				location={location}>
-			</ToolItemHeadComponent>
+			</ToolItemHead>
 		)
 	} else {
-		const { handleClick } = props
+		const { onClick } = props
 		return (
-			<ToolItemBodyComponent name={name} type={type} 
-				location={location} handleClick={handleClick}>
-			</ToolItemBodyComponent>
+			<ToolItemBody name={name} type={type} 
+				location={location} onClick={onClick}>
+			</ToolItemBody>
 		)
 	}
 }
@@ -25,4 +25,4 @@ ToolItemComponent.defaultProps = {
 	isHead: false
 }
 
-export default ToolItemComponent
+export default ToolItemComponent;

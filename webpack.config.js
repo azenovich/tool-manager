@@ -11,7 +11,8 @@ const webpackConfig = {
 	},
 	output: {
 		path: outputPath,
-		filename: '[name].js'
+		filename: '[name].js',
+		publicPath: '/'
 	},
 	module: {
 		rules: [

@@ -1,25 +1,25 @@
-import React from 'react'
+import React from 'react';
 
-import { PageItemComponent } from './page-item'
+import { default as PageItem } from './page-item';
 
-import './component.scss'
+import './component.scss';
 
 const ToolPageNavigationComponent = (props) => {
-	const { pageIndex, handlePreviousClick, handleNextClick } = props
+	const { pageIndex, onPreviousClick, onNextClick } = props
 
 	return (
 		<ul className="ToolPageNavigation">
-			<PageItemComponent handleClick={handlePreviousClick} >
+			<PageItem onClick={onPreviousClick} >
 					Previous
-			</PageItemComponent>
-			<PageItemComponent isCurrentPage={true}>
+			</PageItem>
+			<PageItem isCurrentPage={true}>
 				{pageIndex}
-			</PageItemComponent>
-			<PageItemComponent handleClick={handleNextClick} >
+			</PageItem>
+			<PageItem onClick={onNextClick} >
 					Next
-			</PageItemComponent>
+			</PageItem>
 		</ul>
 	)
 }
 
-export default ToolPageNavigationComponent
+export default ToolPageNavigationComponent;

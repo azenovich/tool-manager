@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const RenderSelectorComponent = (props) => {
 	const { input, children, className } = props
@@ -10,4 +10,4 @@ const RenderSelectorComponent = (props) => {
 	)
 }
 
-export default RenderSelectorComponent
+export default RenderSelectorComponent;

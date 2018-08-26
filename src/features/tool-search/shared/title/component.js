@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import './component.scss'
+import './component.scss';
 
 const TitleComponent = (props) => {
 	const { children, className } = props
@@ -12,4 +12,4 @@ const TitleComponent = (props) => {
 	)
 }
 
-export default TitleComponent
+export default TitleComponent;

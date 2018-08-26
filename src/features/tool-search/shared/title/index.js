@@ -1,1 +1,1 @@
-export { default as TitleComponent } from './component'
+export { default } from './component';
