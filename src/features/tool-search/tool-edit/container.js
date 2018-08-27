@@ -25,7 +25,7 @@ class ToolEditContainer extends Component {
 		}
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		let { toolId } = this.props.match.params
 		toolId = +toolId
 

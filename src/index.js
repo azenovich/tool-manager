@@ -1,18 +1,17 @@
-import React from 'react'
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
-import { render } from 'react-dom'
-import { setConfig } from 'react-hot-loader'
-import { ApolloProvider } from 'react-apollo'
-import { Provider } from 'react-redux'
-import { hot } from 'react-hot-loader'
+import React from 'react';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { render } from 'react-dom';
+import { setConfig } from 'react-hot-loader';
+import { ApolloProvider } from 'react-apollo';
+import { Provider } from 'react-redux';
+import { hot } from 'react-hot-loader';
 
-import { client, store } from './core'
-import { default as ToolSearch } from './features/tool-search'
-import { default as NotFoundPage } from './features/not-found/not-found-page'
+import { client, store } from './core';
+import { ToolSearch, NotFoundPage } from './features/';
 
-import '../public/images/react.png'
-import '../public/styles/base.scss'
-import '../public/styles/index.scss'
+import '../public/images/react.png';
+import '../public/styles/base.scss';
+import '../public/styles/index.scss';
 
 setConfig({ logLevel: 'debug' })
 
@@ -38,4 +37,4 @@ App = hot(module)(App)
 render (
 	<App />,
 	document.querySelector('#mount_place')
-)
+);
